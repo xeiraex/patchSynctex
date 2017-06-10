@@ -57,7 +57,7 @@ function (nwfile, syncfile=NULL, verbose=FALSE, ...){
             tag=inputs[,2];
             inputs[,3]=paste0(tools::file_path_sans_ext(inputs[,3]), ".Rnw");
             lines[toRepl]=paste0("Input:",inputs[,2],":",inputs[,3]);
-            re=paste0("^([xkgvh\\$\\(\\[]", tag ,"\\,)(\\d+)([\\,:].*)");
+            re=paste0("^([xkgvh\\$\\(\\[]", tag ,"\\,)([1-9]\\d*)([\\,:].*)");
             needReplacment=grep(re,lines[seq(1,postemble)],perl=T);
             toRepl=str_match(lines[needReplacment],re);
             toRepl[,3]=as.character(mapping_[as.integer(toRepl[,3])]);
